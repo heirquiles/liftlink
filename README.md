@@ -42,9 +42,9 @@ Styling with options for light and dark modes
 ****************************************************************
 
 ### Nice-to-Haves
-Group specific notifications
-Exercise instructional catalog
-1RM Calculator
-Initial PR input page
-Nutrition input page and plans
+Group specific notifications, 
+Exercise instructional catalog, 
+1RM Calculator, 
+Initial PR input page, 
+Nutrition input page and plans, and
 Group challenges
