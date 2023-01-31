@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+  LiftLink - {{ request.user.username }}
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+<h1>Welcome <span>{{ request.user.username }}!</span></h1>
+
+{% for post in posts %}
+<h2>{{ post.title }}</h2>
+{% if post.image %}
+<img src="{{ post.image.url }}" alt="{{ post.user.username }}">
+{% endif %}
+<p>{{ post.body }}</p>
+<p>{{ post.user.username }}</p>
+<p>{{ post.created_date }}</p>
+<button class="like">👊</button>
+<hr>
+{% endfor %}
+{% endblock %}

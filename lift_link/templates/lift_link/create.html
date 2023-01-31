@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+  LiftLink - New Post
+{% endblock %}
+
+{% block content %}
+<h1>How was your workout? What's on your mind?</h1>
+  <form action="{% url 'create' %}" method="POST">
+    {% csrf_token %}
+      {{ form }}
+      <button type="submit">Post</button>
+  </form>
+  
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+  LiftLink - Sign Up
+{% endblock %}
+
+{% block content %}
+<h1>Welcome to <span>LiftLink!</span> The all-inclusive fitness community!</h1>
+  <form action="{% url 'register' %}" method="POST">
+    {% csrf_token %}
+      {{ form }}
+      <button type="submit">Sign Up!</button>
+
+  </form>
+{% endblock %}
