@@ -1,0 +1,59 @@
+:root {
+  --background-body: #0d1117;
+  --background: #161b22;
+  --background-bright: rgba(240, 246, 252, 0.15);
+  --background-alt: #1a242f;
+  --selection: #1c76c5;
+  --text-main: #c9d1d9;
+  --text-bright: #e3e9f0;
+  --text-muted: #8b949e;
+  --links: #f7fd04;
+  --focus: #388bfd;
+  --focus-background: #0c2d6b;
+  --border: #21252c;
+  --border-muted: #21262d;
+  --border-bright: #8b949e;
+  --button-hover: #324759;
+  --form-placeholder: #a9a9a9;
+}
+
+body nav:first-of-type:before {
+  backdrop-filter: saturate(180%) blur(3px);
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.navbutton {
+  margin: 5px;
+  background-color: var(--links);
+  color: var(--background);
+}
+
+body {
+  min-height: 100vh;
+  background-image: url(https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+span {
+  background-color: #f7fd04;
+  color: #161b22;
+  padding: 0.25rem;
+  border-radius: 8px;
+}
+
+.like:active {
+  background-color: #1c76c500;
+}
+
+h2 {
+  display: inline-block;
+  background-blend-mode: overlay;
+}
