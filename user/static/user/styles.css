@@ -7,7 +7,7 @@
   --text-main: #c9d1d9;
   --text-bright: #e3e9f0;
   --text-muted: #8b949e;
-  --links: #f7fd04;
+  --special-text: #f7fd04;
   --focus: #388bfd;
   --focus-background: #0c2d6b;
   --border: #21252c;
@@ -30,7 +30,7 @@ body nav:first-of-type:before {
 
 .navbutton {
   margin: 5px;
-  background-color: var(--links);
+  background-color: var(--special-text);
   color: var(--background);
 }
 
@@ -43,8 +43,8 @@ body {
 }
 
 span {
-  background-color: #f7fd04;
-  color: #161b22;
+  background-color: var(--special-text);
+  color: var(--background);
   padding: 0.25rem;
   border-radius: 8px;
 }
@@ -56,4 +56,9 @@ span {
 h2 {
   display: inline-block;
   background-blend-mode: overlay;
+}
+
+.addbtn {
+  color: var(--background);
+  background-color: var(--special-text);
 }

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import NewPost, NewExercise
-from .forms import NewPostForm, NewExerciseForm
+from .models import NewPost, NewExercise, NewWorkout
+from .forms import NewPostForm, NewExerciseForm, NewWorkoutForm
 from django.contrib.auth.decorators import login_required
 
 def index(request):
@@ -54,9 +54,27 @@ def exercise(request):
             new_exercise.user = request.user
             new_exercise.save()
 
-            return redirect('home')
-    return render(request, 'lift_link/workouts.html', {'form': form})
+            return redirect('workouts')
+    return redirect(request, 'lift_link/workouts.html', {'form': form})
    
 def workouts(request):
-    workouts = NewExercise.objects.all().order_by('-created_date')
-    return render(request, 'lift_link/workouts.html', {'exercises': exercises})
+    if request.method == 'GET':
+        workout = NewWorkoutForm()
+    else:
+        workout = NewWorkoutForm(request.POST)
+
+        if workout.is_valid():
+            title = workout.cleaned_data['title']
+            exercises = workout.cleaned_data['exercises']
+
+            new_workout = NewWorkout()
+            new_workout.title = title
+            new_workout.exercises.set(queryset='exercises')
+            new_workout.user = request.user
+            new_workout.save()
+
+            return redirect(request, 'lift_link/workouts.html', {'workout': workout})
+
+    exercises = NewWorkout.exercises
+    context = {'workout': workout, 'exercises': exercises}
+    return render(request, 'lift_link/workouts.html', context)

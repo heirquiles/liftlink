@@ -5,11 +5,18 @@
 {% endblock %}
 
 {% block content %}
-<h1>How was your workout?</h1>
+<h1>Let's see what you got done!</h1>
   <form action="{% url 'workouts' %}" method="POST">
     {% csrf_token %}
-      {{ form }}
+      {{ workout }}
       <button type="submit">Post</button>
   </form>
+  <form action="{% url 'workouts' %}" method="POST">
+    {% csrf_token %}
+      {{ exercises }}
+      <button type="submit">Post</button>
+  </form>
+  
+
   
 {% endblock %}
