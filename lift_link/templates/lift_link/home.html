@@ -1,16 +1,21 @@
 {% extends "base.html" %} {% block title %} LiftLink - Home {% endblock %} 
 {% block content %}
-<h1>Welcome to the <span class="colorBlock">LiftLink</span> Mecca!</h1>
+<!-- <h1>Welcome to the <span class="colorBlock">LiftLink</span> Mecca!</h1> -->
 {% csrf_token %} {% for post in posts %}
-<h2>{{ post.title }}</h2>
-<br>
-{% if post.image %}
-<img src="{{ post.image.url }}" alt="{{ post.user.username }}" />
-{% endif %}
-<p>{{ post.body }}</p>
-<p>{{ post.user.username }}</p>
-<p>{{ post.created_date }}</p>
-<button class="like">👊</button>
-<hr />
+<div class="card">
+    <div class="postCardTop">
+    <p class="user">@{{ post.user.username }}</p>
+    <p>{{ post.body }}</p>
+    <br>
+    {% if post.image %}
+    <img src="{{ post.image.url }}" alt="{{ post.user.username }}" />
+    {% endif %}
+    </div>
+        <div class="postCardBottom">
+            <p>{{ post.created_date }}</p>
+            <button class="like">👊</button>
+        </div>
+    
+</div>
 {% endfor %} 
 {% endblock %}

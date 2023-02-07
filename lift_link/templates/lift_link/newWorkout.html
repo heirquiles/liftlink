@@ -6,22 +6,23 @@
 
 {% block content %}
 <h1>Let's see what you got done today!</h1>
-  <form id='workout'  action="{% url 'newWorkout' %}" method="POST">
-      {% csrf_token %}
-        {{ workout }}
-        <span id="addBtn">
-          <label>Add an Exercise
-          <button @submit.prevent="onSubmit" @click="addExercise = !addExercise" class="addbtn">+</button></label>
-        </span>
-    </form>
-  
-  <div v-if="addExercise">
-    <form id="exercise" action="{% url 'newWorkout' %}" method="POST">
-      {% csrf_token %}
-          {{ form }}
+  <div class="inputCard">
+    <form id='workout' @submit.prevent action="{% url 'newWorkout' %}" method="POST">
+        {% csrf_token %}
+          {{ workout }}
+          <span id="addBtn">
+            <label>Add an Exercise
+            <button type='button' @click="addForm" class="addbtn">+</button></label>
+          </span>
+      </form>
     
-      <button type="submit">Save</button>
-    </form>
+      <form v-for='form in counter' id="exercise" action="{% url 'newWorkout' %}" method="POST">
+        {% csrf_token %}
+            {{ form }}
+
+            
+            <button id="saveBtn" type="submit">Save</button>
+          </form>
   </div>
 
   

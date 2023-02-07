@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class NewPost(models.Model):
-    title = models.CharField(max_length=100)
     body = models.TextField()
     public = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -11,7 +10,7 @@ class NewPost(models.Model):
     image = models.ImageField(upload_to="post_images/", blank=True)
 
     def __str__(self):
-        return self.title + ' ' + self.user.username
+        return self.user.username + ' ' + self.created_date
 
 class NewExercise(models.Model):
     name = models.CharField(max_length=100)

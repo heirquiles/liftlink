@@ -20,13 +20,11 @@ def create(request):
         form = NewPostForm(request.POST, request.FILES)
         
         if form.is_valid():
-            title = form.cleaned_data['title']
             body = form.cleaned_data['body']
             public = form.cleaned_data['public']
             image = form.cleaned_data['image']
 
             new_post = NewPost()
-            new_post.title = title
             new_post.body = body
             new_post.public = public
             new_post.image = image
@@ -61,11 +59,13 @@ def exercise(request):
     return redirect(request, 'lift_link/newWorkout.html', {'form': form})
    
 def workouts(request):
+    form = NewExerciseForm()
     if request.method == 'GET':
         workout = NewWorkoutForm()
-        form = NewExerciseForm()
     else:
         workout = NewWorkoutForm(request.POST)
+        exercise(request.POST)
+
 
         if workout.is_valid():
             title = workout.cleaned_data['title']

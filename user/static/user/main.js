@@ -6,21 +6,23 @@ const app = createApp({
   data() {
     return { 
       addExercise: "",
-      counter: 0,
+      counter: []
       
     }
   },
   methods: {
-    
+    // moveAddButton () {
+    //   let button = document.querySelector('.addbtn')
 
-    displayForm() {
+
+
+    // },
+    addForm() {
+        this.counter.push(null)
+        
       
-        let newExercise = document.getElementById("firstExercise").cloneNode(true)
-        newExercise.setAttribute("id", "newExercise")
-        document.getElementById("addingMoreId").appendChild(newExercise)
-        newExercise.car.setAttribute("name", fieldName)
-        newExercise.elements[fieldName].setAttribute("id", fieldName)
     }
+    
     }
 
   }

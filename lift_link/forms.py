@@ -5,7 +5,7 @@ class NewPostForm(forms.ModelForm):
     class Meta:
         model = NewPost
         
-        fields = ('title', 'body', 'public', 'image')
+        fields = ( 'body', 'public', 'image')
 
 class NewExerciseForm(forms.ModelForm):
     class Meta:
