@@ -42,7 +42,7 @@ body {
   background-repeat: no-repeat;
 }
 
-span {
+.colorBlock {
   background-color: var(--special-text);
   color: var(--background);
   padding: 0.25rem;
@@ -58,6 +58,10 @@ h2 {
   background-blend-mode: overlay;
 }
 
+img {
+  max-width: 30vw;
+  max-height: 30vh;
+}
 .addbtn {
   color: var(--background);
   background-color: var(--special-text);

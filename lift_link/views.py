@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import ListView
 from .models import NewPost, NewExercise, NewWorkout
-from .forms import NewPostForm, NewExerciseForm, NewWorkoutForm
+from .forms import NewPostForm, ExerciseFormSet, NewExerciseForm, NewWorkoutForm
 from django.contrib.auth.decorators import login_required
 
 def index(request):
@@ -16,17 +17,19 @@ def create(request):
         form = NewPostForm()
 
     else:
-        form = NewPostForm(request.POST)
+        form = NewPostForm(request.POST, request.FILES)
         
         if form.is_valid():
             title = form.cleaned_data['title']
             body = form.cleaned_data['body']
             public = form.cleaned_data['public']
+            image = form.cleaned_data['image']
 
             new_post = NewPost()
             new_post.title = title
             new_post.body = body
             new_post.public = public
+            new_post.image = image
             new_post.user = request.user
             new_post.save()
 
@@ -54,27 +57,30 @@ def exercise(request):
             new_exercise.user = request.user
             new_exercise.save()
 
-            return redirect('workouts')
-    return redirect(request, 'lift_link/workouts.html', {'form': form})
+            return redirect('newWorkout')
+    return redirect(request, 'lift_link/newWorkout.html', {'form': form})
    
 def workouts(request):
     if request.method == 'GET':
         workout = NewWorkoutForm()
+        form = NewExerciseForm()
     else:
         workout = NewWorkoutForm(request.POST)
 
         if workout.is_valid():
             title = workout.cleaned_data['title']
-            exercises = workout.cleaned_data['exercises']
-
             new_workout = NewWorkout()
             new_workout.title = title
-            new_workout.exercises.set(queryset='exercises')
             new_workout.user = request.user
             new_workout.save()
 
-            return redirect(request, 'lift_link/workouts.html', {'workout': workout})
+            return redirect('workouts')
 
+    
+    context = {'workout': workout, 'form': form}
+    return render(request, 'lift_link/newWorkout.html', context)
+
+def display_workouts(request):
+    workouts = NewWorkout.objects.all()
     exercises = NewWorkout.exercises
-    context = {'workout': workout, 'exercises': exercises}
-    return render(request, 'lift_link/workouts.html', context)
+    return render(request, 'lift_link/workouts.html', {'workouts': workouts, 'exercises': exercises})

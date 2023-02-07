@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+  LiftLink - New Workout
+{% endblock %}
+
+{% block content %}
+<h1>Let's see what you got done today!</h1>
+  <form id='workout'  action="{% url 'newWorkout' %}" method="POST">
+      {% csrf_token %}
+        {{ workout }}
+        <span id="addBtn">
+          <label>Add an Exercise
+          <button @submit.prevent="onSubmit" @click="addExercise = !addExercise" class="addbtn">+</button></label>
+        </span>
+    </form>
+  
+  <div v-if="addExercise">
+    <form id="exercise" action="{% url 'newWorkout' %}" method="POST">
+      {% csrf_token %}
+          {{ form }}
+    
+      <button type="submit">Save</button>
+    </form>
+  </div>
+
+  
+
+  
+{% endblock %}

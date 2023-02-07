@@ -1,8 +1,9 @@
 {% extends "base.html" %} {% block title %} LiftLink - Home {% endblock %} 
 {% block content %}
-<h1>Welcome to the <span>LiftLink</span> Mecca!</h1>
+<h1>Welcome to the <span class="colorBlock">LiftLink</span> Mecca!</h1>
 {% csrf_token %} {% for post in posts %}
 <h2>{{ post.title }}</h2>
+<br>
 {% if post.image %}
 <img src="{{ post.image.url }}" alt="{{ post.user.username }}" />
 {% endif %}

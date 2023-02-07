@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<h1>Welcome to <span>LiftLink!</span> The all-inclusive fitness community!</h1>
+<h1>Welcome to <span class="colorBlock">LiftLink!</span> The all-inclusive fitness community!</h1>
   <form action="{% url 'register' %}" method="POST">
     {% csrf_token %}
       {{ form }}

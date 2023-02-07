@@ -1,11 +1,14 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+
+
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('create/', views.create, name='create'),
     path('home/', views.home, name='home'),
-    path('workouts/', views.workouts, name='workouts'),
+    path('newWorkout/', views.workouts, name='newWorkout'),
+    path('workouts/', views.display_workouts, name='workouts'),
 
 
 ]

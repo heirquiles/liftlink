@@ -5,18 +5,14 @@
 {% endblock %}
 
 {% block content %}
-<h1>Let's see what you got done!</h1>
-  <form action="{% url 'workouts' %}" method="POST">
-    {% csrf_token %}
-      {{ workout }}
-      <button type="submit">Post</button>
-  </form>
-  <form action="{% url 'workouts' %}" method="POST">
-    {% csrf_token %}
-      {{ exercises }}
-      <button type="submit">Post</button>
-  </form>
-  
+
+<h1>Let's check out your <span class="colorBlock">Armory</span> 💪</h1>
+{% for workout in workouts %}
+{{ workout.title }}
+<br>
+{{  workout.exercises.all }}
+<hr>
+{% endfor %}
 
   
 {% endblock %}

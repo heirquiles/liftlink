@@ -13,10 +13,12 @@
     <title>{% block title %} LiftLink - Home {% endblock %}</title>
   </head>
   <body>
-    {% include "_navbar.html" %}
-    <main class="container content">{% block content %} {% endblock %}</main>
-    <footer class="container">
-      &COPY; 2023 | Victor Quiles | All Rights Reserved
-    </footer>
+    <div id="app">
+      {% include "_navbar.html" %}
+      <main class="container content">{% block content %} {% endblock %}</main>
+      <footer class="container">
+        &COPY; 2023 | Victor Quiles | All Rights Reserved
+      </footer>
+    </div>
   </body>
 </html>
