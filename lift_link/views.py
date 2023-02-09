@@ -55,7 +55,7 @@ def exercise(request):
             new_exercise.user = request.user
             new_exercise.save()
 
-            return redirect('newWorkout')
+            return redirect('workouts')
     return redirect(request, 'lift_link/newWorkout.html', {'form': form})
    
 def workouts(request):
@@ -64,7 +64,7 @@ def workouts(request):
         workout = NewWorkoutForm()
     else:
         workout = NewWorkoutForm(request.POST)
-        exercise(request.POST)
+        form = NewExerciseForm(request.POST)
 
 
         if workout.is_valid():
@@ -73,6 +73,23 @@ def workouts(request):
             new_workout.title = title
             new_workout.user = request.user
             new_workout.save()
+
+            return redirect('workouts')
+
+        if form.is_valid():
+            
+            name = form.cleaned_data['name']
+            reps = form.cleaned_data['reps']
+            sets = form.cleaned_data['sets']
+            notes = form.cleaned_data['notes']
+
+            new_exercise = NewExercise()
+            new_exercise.name = name
+            new_exercise.reps = reps
+            new_exercise.sets = sets
+            new_exercise.notes = notes
+            new_exercise.user = request.user
+            new_exercise.save()
 
             return redirect('workouts')
 

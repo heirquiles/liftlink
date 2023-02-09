@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block content %}
-
-<h1>Let's check out your <span class="colorBlock">Armory</span> 💪</h1>
-{% for workout in workouts %}
-{{ workout.title }}
-<br>
-{{  workout.exercises.all }}
-<hr>
-{% endfor %}
+<div class="card">
+  <h1>Here's all the workouts you've completed thus far!</h1>
+  {% for workout in workouts %}
+  {{ workout.title }}
+  <br>
+  {{  workout.exercise.name }}
+  {% endfor %}
+</div>
 
   
 {% endblock %}

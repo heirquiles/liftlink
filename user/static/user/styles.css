@@ -17,6 +17,7 @@
   --form-placeholder: #a9a9a9;
 }
 nav {
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   border: var(--border-bright) solid .5px;
@@ -35,7 +36,7 @@ nav a:active {
   color: var(--special-text)
 }
 body nav:first-of-type:before {
-  backdrop-filter: saturate(180%) blur(3px);
+  backdrop-filter: saturate(180%) blur(10px);
   content: "";
   position: absolute;
   z-index: -1;
@@ -59,7 +60,7 @@ body nav:first-of-type:before {
 
 #liftLink:hover {
   color: var(--background-bright);
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 body {
@@ -69,6 +70,11 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+main {
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .colorBlock {
@@ -89,14 +95,15 @@ h2 {
 
 img {
   max-width: 50vw;
-  max-height: 35vh;
+  max-height: 40vh;
   border-radius: 12px;
 
 }
 .card {
   margin-top: 0;
   border: var(--border-bright) solid .5px;
-  padding: 1em;
+
+  padding: .5em 1em;
 }
 .postCardTop {
   padding: 1vh 0;
@@ -111,7 +118,6 @@ img {
   gap: 1.5vw;
   align-items: baseline;
   justify-content: flex-start;
-  overflow: hidden;
   color: var(--text-muted);
 }
 .inputCard {
@@ -121,15 +127,19 @@ img {
   gap: 1.5vw;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-x: scroll;
   
-  backdrop-filter: saturate(180%) blur(3px);
 }
 .addbtn {
   color: var(--background);
   background-color: var(--special-text);
+  
 }
 
+#addBtn {
+  font-size: 1.2rem;
+  text-align: center;
+}
 .user {
 
 }

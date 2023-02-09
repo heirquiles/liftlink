@@ -15,13 +15,15 @@ def login(request):
         if form.is_valid():
             username_input = form.cleaned_data['username']
             password_input = form.cleaned_data['password']
-            user = authenticate(username=username_input, password=password_input)
+            user = authenticate(request, username=username_input, password=password_input)
             if user is not None:
                 user_login(request, user)
                 previous_page = request.GET.get('next')
 
                 if previous_page is not None:
-                    return redirect('home')
+                    return redirect('previous_page')
+                else:
+                    return redirect('profile')
 
     return render(request, 'user/login.html', {'form': form})
 
