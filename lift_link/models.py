@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class NewPost(models.Model):
+    title = models.CharField(max_length=100, default='title')
     body = models.TextField()
     public = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)

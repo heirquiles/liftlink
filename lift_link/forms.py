@@ -4,7 +4,6 @@ from .models import NewPost, NewExercise, NewWorkout
 class NewPostForm(forms.ModelForm):
     class Meta:
         model = NewPost
-        
         fields = ( 'body', 'public', 'image')
 
 class NewExerciseForm(forms.ModelForm):

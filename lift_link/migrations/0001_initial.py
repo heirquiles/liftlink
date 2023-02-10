@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             name='NewPost',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
+                ('title', models.CharField(max_length=100, default= 'title')),
                 ('body', models.TextField()),
                 ('public', models.BooleanField(default=True)),
                 ('created_date', models.DateTimeField(auto_now_add=True)),

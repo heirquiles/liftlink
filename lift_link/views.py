@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import ListView
+from django.views.decorators.csrf import csrf_protect
 from .models import NewPost, NewExercise, NewWorkout
 from .forms import NewPostForm, ExerciseFormSet, NewExerciseForm, NewWorkoutForm
 from django.contrib.auth.decorators import login_required
@@ -33,11 +33,10 @@ def create(request):
 
             return redirect('home')
     return render(request, 'lift_link/create.html', {'form': form})
+@csrf_protect
+def exercises(request):
 
-def exercise(request):
-    if request.method == 'GET':
-        form = NewExerciseForm()
-    else: 
+    if request.method == 'POST':
         form = NewExerciseForm(request.POST)
 
         if form.is_valid():
@@ -56,17 +55,16 @@ def exercise(request):
             new_exercise.save()
 
             return redirect('workouts')
-    return redirect(request, 'lift_link/newWorkout.html', {'form': form})
+    context = {'form': form}
+    return redirect(request, 'lift_link/workouts.html', context)
    
 def workouts(request):
-    form = NewExerciseForm()
+    
     if request.method == 'GET':
         workout = NewWorkoutForm()
     else:
         workout = NewWorkoutForm(request.POST)
-        form = NewExerciseForm(request.POST)
-
-
+    
         if workout.is_valid():
             title = workout.cleaned_data['title']
             new_workout = NewWorkout()
@@ -74,28 +72,12 @@ def workouts(request):
             new_workout.user = request.user
             new_workout.save()
 
-            return redirect('workouts')
-
-        if form.is_valid():
-            
-            name = form.cleaned_data['name']
-            reps = form.cleaned_data['reps']
-            sets = form.cleaned_data['sets']
-            notes = form.cleaned_data['notes']
-
-            new_exercise = NewExercise()
-            new_exercise.name = name
-            new_exercise.reps = reps
-            new_exercise.sets = sets
-            new_exercise.notes = notes
-            new_exercise.user = request.user
-            new_exercise.save()
-
-            return redirect('workouts')
+            return render(request, 'lift_link/exercises.html')
 
     
-    context = {'workout': workout, 'form': form}
+    context = {'workout': workout}
     return render(request, 'lift_link/newWorkout.html', context)
+
 
 def display_workouts(request):
     workouts = NewWorkout.objects.all()

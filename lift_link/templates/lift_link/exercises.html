@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+  LiftLink - New Workout
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    
+    <div class="inputCard">
+        
+            <div id="exercise">
+                <label>Exercise Name: <input id="name" type="text"></label>
+                <br>
+                <label>Number of Repetitions: <input id="reps" type="number"></label>
+                <label>Number of Sets: <input id="sets" type="number"></label>
+                <label>Notes: <input id="notes" type="text"></label>
+                
+                
+                <button id="saveBtn" type="submit" @click="postExercise">Save</button>
+            </div>
+        
+    </div>
+    <div id="addBtn">
+        <label>Add an Exercise
+            <button type='button' @click="addForm" class="addbtn">+</button></label>
+        </div>
+</div>
+{% endblock %}
