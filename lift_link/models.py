@@ -9,9 +9,10 @@ class NewPost(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="post_images/", blank=True)
+    likes = models.ManyToManyField(User, related_name='liked_posts')
 
     def __str__(self):
-        return self.user.username + ' ' + self.created_date
+        return self.user.username + ' ' + self.title
 
 class NewExercise(models.Model):
     name = models.CharField(max_length=100)

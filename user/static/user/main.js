@@ -5,20 +5,26 @@ const app = createApp({
   data() {
     return {
       addExercise: "",
-      counter: [],
+      counter: [null],
     };
   },
   methods: {
-    postExercise() {
-      
-        let data = new FormData();
-        data.append("name", document.querySelector("#name").value);
-        data.append("reps", document.querySelector("#reps").value);
-        data.append("sets", document.querySelector("#sets").value);
-        data.append("notes", document.querySelector("#notes").value);
-       
+    redirect() {
+      window.location.href = "../workouts/"
 
-       
+    },
+
+
+    postExercise() {
+
+          let data = new FormData()
+          
+          data.append("name", document.querySelector("#name").value)
+          data.append("reps", document.querySelector("#reps").value)
+          data.append("sets", document.querySelector("#sets").value)
+          data.append("notes", document.querySelector("#notes").value)
+        
+
         axios({
           url: "/exercises/",
           method: "POST",
@@ -26,14 +32,20 @@ const app = createApp({
           headers: {"X-CSRFToken": this.getCookie('csrftoken')}
         }).then(function (response) {
             console.log(response)
-            window.location.href = "../workouts/"
+            
             
   
           });
       
     },
-    addForm() {
-      this.counter.push(null);
+    saveForm() {
+      this.postExercise()
+      let name = document.querySelector("#name").value=' '
+      let reps = document.querySelector("#reps").value=' '
+      let sets = document.querySelector("#sets").value=' '
+      let notes = document.querySelector("#notes").value=' '
+      
+      // this.counter.push(null);
     },
     getCookie(name) {
       let cookieValue = null;

@@ -9,21 +9,19 @@
     
     <div class="inputCard">
         
-            <div id="exercise">
+            <div v-for="exercise in counter" id="exercise">
                 <label>Exercise Name: <input id="name" type="text"></label>
                 <br>
                 <label>Number of Repetitions: <input id="reps" type="number"></label>
                 <label>Number of Sets: <input id="sets" type="number"></label>
                 <label>Notes: <input id="notes" type="text"></label>
-                
-                
-                <button id="saveBtn" type="submit" @click="postExercise">Save</button>
             </div>
-        
-    </div>
-    <div id="addBtn">
-        <label>Add an Exercise
-            <button type='button' @click="addForm" class="addbtn">+</button></label>
+            
+        </div>
+        <div id="addBtn">
+            <label>Add an Exercise
+                <button type='button' @click="saveForm" class="addbtn">+</button></label>
+                <button id="saveBtn" type="submit" @click="redirect">Save</button>
         </div>
 </div>
 {% endblock %}

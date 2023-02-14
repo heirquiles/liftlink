@@ -10,6 +10,7 @@ urlpatterns = [
     path('newWorkout/', views.workouts, name='newWorkout'),
     path('workouts/', views.display_workouts, name='workouts'),
     path('exercises/', views.exercises, name='exercises'),
+    path('likes/<int:id>', views.likes, name='likes'),
 
 
 ]
