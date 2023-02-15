@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as user_login, logout as user_logout
 from django.contrib.auth.decorators import login_required
 from lift_link.models import NewPost
+from .models import Profile
 
 
 def login(request):
@@ -54,8 +55,15 @@ def register(request):
     return render(request, 'user/register.html', {'form': form})
 
 @login_required
-def profile(request):
+def profile(request, id):
+    user = User.objects.get(id=id)
+    profile = user.profile
     posts = NewPost.objects.filter(user=request.user).order_by('-created_date')
-    return render(request, 'user/profile.html',{'posts': posts})
+    context = {'posts': posts, 'profile': profile}
+    return render(request, 'user/profile.html', context)
+
+def profile_list(request):
+    profiles = Profile.objects.exclude(user=request.user)
+    return render(request, "user/profile_list.html", {"profiles": profiles})
 
  

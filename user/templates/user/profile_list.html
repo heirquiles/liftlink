@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+  LiftLink - Friends
+{% endblock%}
+{% block content %}
+
+<div class="followerFollowed">
+    <ul>
+        {% for follower in profile.followed_by.all %}
+            <a href="{% url 'profile' follower.id %}">
+                <li>@{{ follower }}</li>
+            </a>
+        {% endfor %}
+        </ul>
+    
+        <ul>
+            {% for following in profile.follows.all %}
+            <a href="{% url 'profile' following.id %}">
+                <li>@{{ following }}</li>
+            </a>
+            {% endfor %}
+            </ul>
+</div>
+  
+{% endblock %}

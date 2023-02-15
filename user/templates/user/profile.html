@@ -1,12 +1,39 @@
 {% extends "base.html" %}
 
 {% block title %}
-  LiftLink - {{ request.user.username }}
+  LiftLink - {{ profile.user.username }}
 {% endblock %}
 
 {% block content %}
 {% csrf_token %}
-<h1>Welcome <span class="colorBlock">{{ request.user.username }}!</span></h1>
+
+<h1><span class="colorBlock">{{ profile.user.username|upper }}</span></h1>
+
+<div class="FollowBtns">
+  {% if profile in user.profile.follows.all %}
+  <button>Unfollow</button>
+  {% else %}
+  <button>Follow</button>
+  {% endif %}
+
+</div>
+
+<a href="{% url 'profile_list' %}">
+  <h3>Follows:</h3>
+  
+   <p>
+     {{ profile.follows.all|length }}
+   </p>
+</a>
+
+<a href="{% url 'profile_list' %}">
+  <h3>Followers:</h3>
+  
+    <p>
+      {{ profile.followed_by.all|length }}
+    </p>
+</a>
+
 {% for post in posts %}
 <div class="card">
   <div class="postCardTop">
