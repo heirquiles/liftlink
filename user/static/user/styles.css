@@ -140,6 +140,8 @@ img {
   font-size: 1.2rem;
   text-align: center;
 }
-.user {
-
+.profileHeaderWrap {
+  display: flex;
+  justify-content: space-evenly;
+  
 }

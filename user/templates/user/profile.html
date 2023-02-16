@@ -1,41 +1,46 @@
 {% extends "base.html" %}
 
 {% block title %}
-  LiftLink - {{ profile.user.username }}
+LiftLink - {{ profile.user.username }}
 {% endblock %}
 
 {% block content %}
 {% csrf_token %}
 
-<h1><span class="colorBlock">{{ profile.user.username|upper }}</span></h1>
-
-<div class="FollowBtns">
-  {% if profile in user.profile.follows.all %}
-  <button>Unfollow</button>
-  {% else %}
-  <button>Follow</button>
-  {% endif %}
-
+<div class="card">
+<div class="profileHeaderWrap">
+  <h1><span class="colorBlock">{{ profile.user.username|upper }}</span></h1>
+  <a href="{% url 'profile_list' %}">
+    <h3>Follows</h3>
+  
+     <p>
+       {{ profile.follows.all|length }}
+     </p>
+  </a>
+  
+  <a href="{% url 'profile_list' %}">
+    <h3>Followers</h3>
+  
+      <p>
+        {{ profile.followed_by.all|length }}
+      </p>
+  </a>
 </div>
+{% if profile.user.username != request.user.username %}
+<form action="post">
+  {% csrf_token %}
+  <div class="FollowBtns">
+    {% if profile in user.profile.follows.all %}
+    <button name="follow" value="unfollow">Unfollow</button>
+    {% else %}
+    <button name="follow" value="follow">Follow</button>
+    {% endif %}
+  </div>
+</form>
+{% endif %}
 
-<a href="{% url 'profile_list' %}">
-  <h3>Follows:</h3>
-  
-   <p>
-     {{ profile.follows.all|length }}
-   </p>
-</a>
-
-<a href="{% url 'profile_list' %}">
-  <h3>Followers:</h3>
-  
-    <p>
-      {{ profile.followed_by.all|length }}
-    </p>
-</a>
 
 {% for post in posts %}
-<div class="card">
   <div class="postCardTop">
   <p class="user">@{{ post.user.username }}</p>
   <p>{{ post.body }}</p>
@@ -49,6 +54,6 @@
           <button class="like">👊</button>
       </div>
   
+      {% endfor %} 
 </div>
-{% endfor %} 
 {% endblock %}

@@ -56,8 +56,21 @@ def register(request):
 
 @login_required
 def profile(request, id):
+    if not hasattr(request.user, 'profile'):
+        missing_profile = Profile(user=request.user)
+        missing_profile.save()
+        
     user = User.objects.get(id=id)
     profile = user.profile
+    if request.method == "POST":
+        data = request.POST
+        action = data.get("follow")
+        if action == "follow":
+            profile.follows.add(profile)
+        elif action == "unfollow":
+            profile.follows.remove(profile)
+        profile.save()
+
     posts = NewPost.objects.filter(user=request.user).order_by('-created_date')
     context = {'posts': posts, 'profile': profile}
     return render(request, 'user/profile.html', context)
