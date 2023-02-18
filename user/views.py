@@ -77,7 +77,6 @@ def profile(request, id):
     return render(request, 'user/profile.html', context)
 
 def profile_list(request):
-    # profiles = Profile.objects.filter(followers=)
     follows = request.user.profile.follows.all()
     followers = request.user.profile.followed_by.all()
     context = {'followers': followers, 'follows': follows} 

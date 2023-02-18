@@ -14,6 +14,6 @@ class NewExerciseForm(forms.ModelForm):
 class NewWorkoutForm(forms.Form):
     title = forms.CharField(max_length=100)
 
-ExerciseFormSet = modelformset_factory(
-    NewExercise, fields=("name", "reps", "sets", "notes"), extra=1
-)
+# ExerciseFormSet = modelformset_factory(
+#     NewExercise, fields=("name", "reps", "sets", "notes"), extra=1
+# )

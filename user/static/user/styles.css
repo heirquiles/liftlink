@@ -143,5 +143,19 @@ img {
 .profileHeaderWrap {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+  margin-top: 0;
+  border-bottom: var(--border-bright) solid .5px;
+  padding: .5em 1em;
+
   
+}
+
+.accountImg {
+  
+  align-self: center;
+  max-width: 10vw;
+  max-height: 12vh;
+  border: solid 2px #e3bc5e;
+  padding: 1vh;
 }

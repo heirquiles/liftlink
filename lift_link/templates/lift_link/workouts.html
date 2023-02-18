@@ -5,12 +5,23 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="card">
   <h1>You have tracked {{ workouts|length }} workouts with us so far!</h1>
   {% for workouts in workouts %}
-  {{ workouts }}
+  <h4>
+    {{ workouts }}
+  </h4>
   <br>
-  {{  exercises }}
+  {% for exercise in workouts.exercises.all %}
+  
+  <h5>{{ exercise.name }}</h5>
+    <p>
+      {{ exercise.sets }} sets of {{ exercise.reps }} repetitions{% if exercise.weight %}@ {{ exercise.weight }} lbs {% endif %}
+    </p>
+      <p>Notes: {{ exercise.notes }}</p>
+
+  {% endfor %}
   <hr>
   {% endfor %}
 </div>

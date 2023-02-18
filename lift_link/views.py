@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 from .models import NewPost, NewExercise, NewWorkout
-from .forms import NewPostForm, ExerciseFormSet, NewExerciseForm, NewWorkoutForm
+from .forms import NewPostForm, NewExerciseForm, NewWorkoutForm
 from django.contrib.auth.decorators import login_required
 
 def index(request):
@@ -40,19 +40,25 @@ def exercises(request):
         form = NewExerciseForm(request.POST)
 
         if form.is_valid():
-            
+            print(request.POST)
             name = form.cleaned_data['name']
             reps = form.cleaned_data['reps']
             sets = form.cleaned_data['sets']
+            weight = form.cleaned_data['weight']
             notes = form.cleaned_data['notes']
+            workout_id = request.POST['workout_id']
 
             new_exercise = NewExercise()
             new_exercise.name = name
             new_exercise.reps = reps
             new_exercise.sets = sets
+            new_exercise.weight = weight
             new_exercise.notes = notes
             new_exercise.user = request.user
             new_exercise.save()
+            workout = NewWorkout.objects.get(id=workout_id)
+            workout.exercises.add(new_exercise)
+            workout.save()
 
             return redirect('workouts')
     context = {'form': form}
@@ -71,8 +77,10 @@ def workouts(request):
             new_workout.title = title
             new_workout.user = request.user
             new_workout.save()
+            
+            
 
-            return render(request, 'lift_link/exercises.html')
+            return render(request, 'lift_link/exercises.html', {'workout': new_workout})
 
     
     context = {'workout': workout}
@@ -85,7 +93,7 @@ def display_workouts(request):
     return render(request, 'lift_link/workouts.html', {'workouts': workouts, 'exercises': exercises})
 
 def likes(request, id):
-    # id = int(request.POST('post_id'))
+    
     post = get_object_or_404(NewPost, id=id)
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)

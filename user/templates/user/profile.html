@@ -11,11 +11,11 @@ LiftLink - {{ profile.user.username }}
 <div class="profileHeaderWrap">
   <img
       class="accountImg"
-      src="{{ profile.user.image.url }}"
+      src="{{ user.profile.image.url }}"
     />
   <h1><span class="colorBlock">{{ profile.user.username|upper }}</span></h1>
   <a href="{% url 'profile_list' %}">
-    <h3>Follows</h3>
+    <h4>Follows</h4>
   
      <p>
        {{ profile.follows.all|length }}
@@ -23,7 +23,7 @@ LiftLink - {{ profile.user.username }}
   </a>
   
   <a href="{% url 'profile_list' %}">
-    <h3>Followers</h3>
+    <h4>Followers</h4>
   
       <p>
         {{ profile.followed_by.all|length }}
