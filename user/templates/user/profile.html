@@ -9,6 +9,10 @@ LiftLink - {{ profile.user.username }}
 
 <div class="card">
 <div class="profileHeaderWrap">
+  <img
+      class="accountImg"
+      src="{{ profile.user.image.url }}"
+    />
   <h1><span class="colorBlock">{{ profile.user.username|upper }}</span></h1>
   <a href="{% url 'profile_list' %}">
     <h3>Follows</h3>

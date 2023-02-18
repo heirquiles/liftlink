@@ -6,11 +6,12 @@
 
 {% block content %}
 <div class="card">
-  <h1>Here's all the workouts you've completed thus far!</h1>
-  {% for workout in workouts %}
-  {{ workout.title }}
+  <h1>You have tracked {{ workouts|length }} workouts with us so far!</h1>
+  {% for workouts in workouts %}
+  {{ workouts }}
   <br>
-  {{  exercise }}
+  {{  exercises }}
+  <hr>
   {% endfor %}
 </div>
   

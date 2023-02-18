@@ -84,8 +84,8 @@ def display_workouts(request):
     exercises = NewWorkout.exercises
     return render(request, 'lift_link/workouts.html', {'workouts': workouts, 'exercises': exercises})
 
-def likes(request):
-    id = int(request.POST.get('post_id'))
+def likes(request, id):
+    # id = int(request.POST('post_id'))
     post = get_object_or_404(NewPost, id=id)
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)

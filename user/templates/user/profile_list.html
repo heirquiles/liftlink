@@ -5,16 +5,17 @@
 {% block content %}
 
 <div class="followerFollowed">
+    <h1>Follows</h1>
     <ul>
-        {% for follower in profile.followed_by.all %}
+        {% for follower in follows %}
             <a href="{% url 'profile' follower.id %}">
                 <li>@{{ follower }}</li>
             </a>
         {% endfor %}
         </ul>
-    
+        <h1>Followers</h1>
         <ul>
-            {% for following in profile.follows.all %}
+            {% for following in followers %}
             <a href="{% url 'profile' following.id %}">
                 <li>@{{ following }}</li>
             </a>

@@ -24,7 +24,7 @@ def login(request):
                 if previous_page is not None:
                     return redirect('previous_page')
                 else:
-                    return redirect('profile')
+                    return redirect('profile', user.id)
 
     return render(request, 'user/login.html', {'form': form})
 
@@ -33,6 +33,7 @@ def logout(request):
     return redirect('login')
 
 def register(request):
+    
     if request.method == 'GET':
         form = RegisterForm()
     else: 
@@ -50,7 +51,7 @@ def register(request):
                 user.email = email
                 user.set_password(password)
                 user.save()
-                return redirect('profile')
+                return redirect('profile', user.id)
 
     return render(request, 'user/register.html', {'form': form})
 
@@ -59,7 +60,7 @@ def profile(request, id):
     if not hasattr(request.user, 'profile'):
         missing_profile = Profile(user=request.user)
         missing_profile.save()
-        
+
     user = User.objects.get(id=id)
     profile = user.profile
     if request.method == "POST":
@@ -76,7 +77,11 @@ def profile(request, id):
     return render(request, 'user/profile.html', context)
 
 def profile_list(request):
-    profiles = Profile.objects.exclude(user=request.user)
-    return render(request, "user/profile_list.html", {"profiles": profiles})
+    # profiles = Profile.objects.filter(followers=)
+    follows = request.user.profile.follows.all()
+    followers = request.user.profile.followed_by.all()
+    context = {'followers': followers, 'follows': follows} 
+    print(follows)
+    return render(request, "user/profile_list.html", context)
 
  
