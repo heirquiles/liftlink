@@ -106,10 +106,11 @@ img {
   padding: .5em 1em;
 }
 .postCardTop {
+  display: flex;
   padding: 1vh 0;
   gap: 1.5vw;
-  align-items: center;
-  justify-content: center;
+  /* align-items: c;
+  justify-content: center; */
   overflow: hidden;
 }
 .postCardBottom {
@@ -152,10 +153,14 @@ img {
 }
 
 .accountImg {
-  
+
   align-self: center;
   max-width: 10vw;
   max-height: 12vh;
   border: solid 2px #e3bc5e;
   padding: 1vh;
+}
+
+.newPost form {
+  background-color: #8b949E00 !important;
 }

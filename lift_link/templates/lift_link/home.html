@@ -4,15 +4,16 @@
 {% csrf_token %} {% for post in posts %}
 <div class="card">
     <div class="postCardTop">
-    <a href="{% url 'profile' user.profile.id %}">
-        <p class="user">@{{ post.user.username }}</p>
-    </a>
-    <p>{{ post.body }}</p>
-    <br>
-    {% if post.image %}
-    <img src="{{ post.image.url }}" alt="{{ post.user.username }}" />
-    {% endif %}
-    </div>
+        <img class="accountImg" src="{{ post.user.profile.image.url }}">
+        <p class="user">@<a href="{% url 'profile' request.user.id %}">{{ post.user.username }}
+        </a>
+        </p>
+</div>
+<p>{{ post.body }}</p>
+<br>
+{% if post.image %}
+<img src="{{ post.image.url }}" alt="{{ post.user.username }}" />
+{% endif %}
         <div class="postCardBottom">
             <p>{{ post.created_date }}</p>
             <a href="{% url 'likes' post.id %}"><button class="like">👊</button></a>

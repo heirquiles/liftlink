@@ -37,4 +37,4 @@ class NewWorkout(models.Model):
         ordering = ['title']
     
     def __str__(self):
-        return self.title + ' by ' + self.user.username
+        return self.title

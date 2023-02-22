@@ -5,6 +5,12 @@ class NewPostForm(forms.ModelForm):
     class Meta:
         model = NewPost
         fields = ( 'body', 'public', 'image')
+        labels = {
+            'body': "Tell us about it!",
+            'public': "Make this post public?",
+            'image': ""
+        }
+        
 
 class NewExerciseForm(forms.ModelForm):
     class Meta:

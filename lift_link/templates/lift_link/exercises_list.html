@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="card">
+    <h1>{{ workouts }}</h1>
   {% for exercise in workouts.exercises.all %}
   
   <h5>{{ exercise.name }}</h5>
