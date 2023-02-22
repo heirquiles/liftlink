@@ -55,7 +55,8 @@ LiftLink - {{ profile.user.username }}
   </div>
       <div class="postCardBottom">
           <p>{{ post.created_date }}</p>
-          <button class="like">👊</button>
+          <a href="{% url 'likes' post.id %}"><button class="like">👊</button></a>
+            <p>{{ post.likes.all|length }} likes</p>
       </div>
   
       {% endfor %} 

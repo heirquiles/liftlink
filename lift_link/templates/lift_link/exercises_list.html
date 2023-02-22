@@ -1,20 +1,12 @@
 {% extends "base.html" %}
 
 {% block title %}
-  LiftLink - Workouts
+  LiftLink - Exercises
 {% endblock %}
 
 {% block content %}
 
 <div class="card">
-  <h1>You have tracked {{ workouts|length }} workouts with us so far!</h1>
-  {% for workouts in workouts %}
-  <h4>
-    <a href="{% url 'exercise_list' workouts.id %}">
-      {{ workouts }}
-    </a>
-  </h4>
-  <br>
   {% for exercise in workouts.exercises.all %}
   
   <h5>{{ exercise.name }}</h5>
@@ -23,9 +15,9 @@
     </p>
       <p>Notes: {{ exercise.notes }}</p>
 
-  {% endfor %}
-  <hr>
-  {% endfor %}
+      <hr>
+      {% endfor %}
+  
 </div>
   
 {% endblock %}

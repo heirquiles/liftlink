@@ -9,7 +9,7 @@ class NewPostForm(forms.ModelForm):
 class NewExerciseForm(forms.ModelForm):
     class Meta:
         model = NewExercise
-        fields = ('name', 'reps', 'sets', 'notes')
+        fields = ('name', 'reps', 'sets', 'weight', 'notes')
 
 class NewWorkoutForm(forms.Form):
     title = forms.CharField(max_length=100)

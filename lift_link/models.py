@@ -21,7 +21,7 @@ class NewExercise(models.Model):
     weight = models.IntegerField(default=0)
     notes = models.CharField(max_length=240, blank=True)
     # created_date = models.DateTimeField(auto_now_add=True)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, default='Admin')
 
     class Meta:
         ordering = ['name']
@@ -31,10 +31,10 @@ class NewExercise(models.Model):
 
 class NewWorkout(models.Model):
     title = models.CharField(max_length=100)
-    # created_date = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=5)
     exercises = models.ManyToManyField(NewExercise, related_name='workouts')
     class Meta:
         ordering = ['title']
     
     def __str__(self):
-        return self.title
+        return self.title + ' by ' + self.user.username

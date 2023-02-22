@@ -92,6 +92,17 @@ def display_workouts(request):
     exercises = NewWorkout.exercises
     return render(request, 'lift_link/workouts.html', {'workouts': workouts, 'exercises': exercises})
 
+def exercise_list(request, id):
+    workout = get_object_or_404(NewWorkout, id=id)
+    exercises = NewWorkout.exercises
+    context = {'workouts': workout, 'exercises': exercises}
+    if workout.exercises.exists():
+        return render(request, 'lift_link/exercises_list.html', context)
+
+
+
+    return redirect('workouts')
+
 def likes(request, id):
     
     post = get_object_or_404(NewPost, id=id)
