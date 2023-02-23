@@ -88,7 +88,7 @@ def workouts(request):
 
 
 def display_workouts(request):
-    workouts = NewWorkout.objects.all().filter()
+    workouts = NewWorkout.objects.all().order_by('-created_date')
     exercises = NewWorkout.exercises
     return render(request, 'lift_link/workouts.html', {'workouts': workouts, 'exercises': exercises})
 

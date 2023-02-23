@@ -10,6 +10,7 @@ const app = createApp({
   },
   methods: {
     redirect() {
+      this.saveForm()
       window.location.href = "../workouts/"
 
     },

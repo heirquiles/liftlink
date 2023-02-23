@@ -13,10 +13,13 @@
                 <input type="hidden" value="{{ workout.id }}" id="exerciseInput">
                 <label>Exercise Name: <input id="name" type="text"></label>
                 <br>
-                <label>Number of Repetitions: <input id="reps" type="number"></label>
-                <label>Number of Sets: <input id="sets" type="number"></label>
-                <label>Working Weight: <input id="weight" type="number"></label>
-                <label>Notes: <input id="notes" type="text"></label>
+                <div class="exerciseForms">
+                    <label>Repetitions: <input id="reps" type="number"></label>
+                    <label>Sets: <input id="sets" type="number"></label>
+                    <label>Weight: <input placeholder='In lbs' id="weight" type="number"></label>
+                </div>
+                <br>
+                <textarea placeholder='Notes' id="notes" type="text"></textarea>
             </div>
             
         </div>
