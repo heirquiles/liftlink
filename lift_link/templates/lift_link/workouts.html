@@ -7,15 +7,15 @@
 {% block content %}
 
 <div class="card">
-  <h1>You have tracked {{ workouts|length }} workouts with us so far!</h1>
+  <h1 id="workoutsTitle">You have tracked <span class="colorBlock">{{ workouts|length }}</span> workouts with us so far!</h1>
   {% for workouts in workouts %}
 
   <div class="exerciseList">
     <p>
-      <a href="{% url 'exercise_list' workouts.id %}">
+      <a id='listedWorkout' href="{% url 'exercise_list' workouts.id %}">
         {{ workouts|title }}
       </a>
-      logged on {{ workouts.created_date}}
+      - {{ workouts.created_date|date:"n/d/Y" }}
     </p>
   </div>
   <!-- <br> -->

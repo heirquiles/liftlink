@@ -99,8 +99,6 @@ def exercise_list(request, id):
     if workout.exercises.exists():
         return render(request, 'lift_link/exercises_list.html', context)
 
-
-
     return redirect('workouts')
 
 def likes(request, id):
@@ -113,3 +111,4 @@ def likes(request, id):
         post.likes.add(request.user)
 
     return redirect('home')
+

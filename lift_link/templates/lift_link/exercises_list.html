@@ -6,10 +6,10 @@
 
 {% block content %}
 <div class="card">
-    <h1 id="newWorkoutTitle">{{ workouts }}</h1>
+    <h1 id="newWorkoutTitle"><span class="colorBlock">{{ workouts|title }}</span></h1>
   {% for exercise in workouts.exercises.all %}
   
-  <h5>{{ exercise.name }}</h5>
+  <h5>{{ exercise.name|title }}</h5>
     <p>
       {{ exercise.sets }} sets of {{ exercise.reps }} repetitions{% if exercise.weight %} @ {{ exercise.weight }} lbs {% endif %}
     </p>

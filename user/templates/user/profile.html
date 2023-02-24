@@ -31,7 +31,7 @@ LiftLink - {{ profile.user.username }}
   </a>
 </div>
 {% if profile.user.username != request.user.username %}
-<form action="post">
+<form action='{% url "profile" user.id %}' method="post">
   {% csrf_token %}
   <div class="FollowBtns">
     {% if profile in user.profile.follows.all %}

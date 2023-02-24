@@ -83,4 +83,5 @@ def profile_list(request):
     print(follows)
     return render(request, "user/profile_list.html", context)
 
- 
+def follow(request, id):
+    pass

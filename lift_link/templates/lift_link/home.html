@@ -5,7 +5,7 @@
 <div class="card">
     <div class="postCardTop">
         <img class="accountImg" src="{{ post.user.profile.image.url }}">
-        <p class="user">@<a href="{% url 'profile' request.user.id %}">{{ post.user.username }}
+        <p class="user">@<a href="{% url 'profile' post.user.id %}">{{ post.user.username }}
         </a>
         </p>
 </div>
