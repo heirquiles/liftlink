@@ -6,16 +6,18 @@
 
 {% block content %}
 <div class="card">
-<!-- <h1>Let's see what you got done today!</h1> -->
-<h1 id="workoutsTitle">Ready to track your greatness?</h1>
-  <div class="inputCard">
-    <form id='workout' action="{% url 'newWorkout' %}" method="POST">
-      {% csrf_token %}
-      {{ workout }}
-      <button type="submit">Save</button>
-    </form>
-    
-    </div>
+<div class="post">
+  
+  <h1 id="workoutsTitle">Ready to track your greatness?</h1>
+    <div class="inputCard">
+      <form id='workout' action="{% url 'newWorkout' %}" method="POST">
+        {% csrf_token %}
+        {{ workout }}
+        <button type="submit">Save</button>
+      </form>
+  
+      </div>
+</div>
   </div>
     
   

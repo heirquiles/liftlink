@@ -5,22 +5,29 @@
 {% block content %}
 
 <div class="followerFollowed">
-    <h1>Follows</h1>
-    <ul>
-        {% for follower in follows %}
-            <a href="{% url 'profile' follower.id %}">
-                <li>@{{ follower }}</li>
-            </a>
-        {% endfor %}
-        </ul>
-        <h1>Followers</h1>
+    <div>
+        <h1>Following</h1>
         <ul>
-            {% for following in followers %}
-            <a href="{% url 'profile' following.id %}">
-                <li>@{{ following }}</li>
-            </a>
+            {% for follower in follows %}
+            <li>
+                @<a href="{% url 'profile' follower.id %}">{{ follower }}
+                </a>
+            </li>
             {% endfor %}
             </ul>
+    </div>
+        <div>
+            <h1>Followers</h1>
+            <ul>
+                {% for following in followers %}
+                <li>
+                        @<a href="{% url 'profile' following.id %}">{{ following }}
+                        </a>
+
+                </li>
+                {% endfor %}
+                </ul>
+        </div>
 </div>
   
 {% endblock %}

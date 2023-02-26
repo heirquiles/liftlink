@@ -1,13 +1,15 @@
 {% extends "base.html" %} {% block title %} LiftLink - Login {% endblock %} 
 {%block content %}
-<h1>Welcome to <span class="colorBlock">LiftLink!</span> Please log in below.</h1>
-<form action="{% url 'login' %}" method="POST">
-  {% csrf_token %} 
-  {{ form }}
-  <button type="submit">Log In</button>
-</form>
-<p>
-  Not a member yet?
-  <a href="{% url 'register' %}">Click here to join the community!</a>
-</p>
+<div class="post">
+  <h1>Welcome to <span class="colorBlock">LiftLink!</span> Please log in below.</h1>
+  <form action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Log In</button>
+  </form>
+  <p>
+    Not a member yet?
+    <a href="{% url 'register' %}">Click here to join the community!</a>
+  </p>
+</div>
 {% endblock %}

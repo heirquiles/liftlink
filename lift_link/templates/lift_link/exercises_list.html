@@ -7,15 +7,17 @@
 {% block content %}
 <div class="card">
     <h1 id="newWorkoutTitle"><span class="colorBlock">{{ workouts|title }}</span></h1>
-  {% for exercise in workouts.exercises.all %}
+  {% for exercise in workouts.exercises.all reversed %}
   
-  <h5>{{ exercise.name|title }}</h5>
-    <p>
-      {{ exercise.sets }} sets of {{ exercise.reps }} repetitions{% if exercise.weight %} @ {{ exercise.weight }} lbs {% endif %}
-    </p>
-      <p>Notes: {{ exercise.notes }}</p>
+  <div class="post">
+    <h5>{{ exercise.name|title }}</h5>
+      <p>
+        {{ exercise.sets }} sets of {{ exercise.reps }} repetitions{% if exercise.weight %} @ {{ exercise.weight }} lbs {% endif %}
+      </p>
+        <p>Notes: {{ exercise.notes }}</p>
+  </div>
 
-      <hr>
+      
       {% endfor %}
   
 </div>

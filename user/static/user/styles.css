@@ -67,7 +67,7 @@ body nav:first-of-type:before {
 
 body {
   min-height: 100vh;
-  max-width: 60vw;
+  max-width: 80vw;
   background-image: url(https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
   background-attachment: fixed;
   background-size: cover;
@@ -86,8 +86,10 @@ main {
 
 .card {
   margin-top: 0;
-  border: var(--border-bright) solid .5px;
-  padding: .5em 1em;
+  /* border-left: var(--border-bright) solid .5px;
+  border-right: var(--border-bright) solid .5px; */
+  /* border-bottom: var(--border-bright) solid .5px; */
+  padding: 1.2em 1.2em;
 }
 
 .colorBlock {
@@ -111,6 +113,19 @@ img {
   max-height: 40vh;
   border-radius: 12px;
 
+}
+
+.post {
+  /* background: rgb(200, 191, 191, .2); */
+  /* backdrop-filter: saturate(150%) blur(5px); */
+  margin: 1em auto;
+  padding: 1rem;
+  width: min-content;
+  min-width: 50vw;
+  border-radius: 12px;
+  -webkit-box-shadow: 0px 0px 5px 2px black;
+  -moz-box-shadow: 0px 0px 5px 2px black;
+  box-shadow: 0px 0px 5px 2px black;
 }
 
 .postCardTop {
@@ -157,6 +172,8 @@ img {
   justify-content: space-evenly;
   align-items: center;
   margin-top: 0;
+  /* border-right: var(--border-bright) solid .5px;
+  border-left: var(--border-bright) solid .5px; */
   border-bottom: var(--border-bright) solid .5px;
   padding: .5em 1em;
 
@@ -242,3 +259,22 @@ img {
   font-weight: 600;
   background-color: var(--special-text);
 }
+
+.followerFollowed {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5em;
+}
+
+.followerFollowed li {
+  background: rgb(200, 191, 191, .2);
+  backdrop-filter: saturate(180%) blur(5px);
+  margin: 1em auto;
+  padding: 1rem;
+  width: min-content;
+  min-width: 25vw;
+  border-radius: 12px;
+  list-style: none;
+}
+

@@ -43,11 +43,11 @@ const app = createApp({
     },
     saveForm() {
       this.postExercise()
-      let name = document.querySelector("#name").value=' '
-      let reps = document.querySelector("#reps").value=' '
-      let sets = document.querySelector("#sets").value=' '
-      let weight = document.querySelector("#weight").value=' '
-      let notes = document.querySelector("#notes").value=' '
+      let name = document.querySelector("#name").value=''
+      let reps = document.querySelector("#reps").value=''
+      let sets = document.querySelector("#sets").value=''
+      let weight = document.querySelector("#weight").value=''
+      let notes = document.querySelector("#notes").value=''
       
       // this.counter.push(null);
     },

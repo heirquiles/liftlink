@@ -6,12 +6,14 @@
 
 {% block content %}
 <div class="card">
-<h1>How was your workout? What's on your mind?</h1>
-  <form class="newPost" enctype="multipart/form-data" action="{% url 'create' %}" method="POST">
-    {% csrf_token %}
-      {{ form }}
-      <button id='postBtn'type="submit">Post</button>
-  </form>
+<div class="post">
+  <h1>How was your workout? What's on your mind?</h1>
+    <form class="newPost" enctype="multipart/form-data" action="{% url 'create' %}" method="POST">
+      {% csrf_token %}
+        {{ form }}
+        <button id='postBtn'type="submit">Post</button>
+    </form>
+</div>
   </div>
   
 {% endblock %}

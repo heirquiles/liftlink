@@ -7,26 +7,28 @@
 {% block content %}
 <div class="card">
     
-    <div class="inputCard">
+    <div class="post">
+        <div class="inputCard">
         
-            <div v-for="exercise in counter" id="exercise">
-                <input type="hidden" value="{{ workout.id }}" id="exerciseInput">
-                <label>Exercise Name: <input id="name" type="text"></label>
-                <br>
-                <div class="exerciseForms">
-                    <label>Repetitions: <input id="reps" type="number"></label>
-                    <label>Sets: <input id="sets" type="number"></label>
-                    <label>Weight: <input placeholder='In lbs' id="weight" type="number"></label>
+                <div v-for="exercise in counter" id="exercise">
+                    <input type="hidden" value="{{ workout.id }}" id="exerciseInput">
+                    <label>Exercise Name: <input id="name" type="text"></label>
+                    <br>
+                    <div class="exerciseForms">
+                        <label>Repetitions: <input id="reps" type="number"></label>
+                        <label>Sets: <input id="sets" type="number"></label>
+                        <label>Weight: <input placeholder='In lbs' id="weight" type="number"></label>
+                    </div>
+                    <br>
+                    <textarea placeholder='Notes' id="notes" type="text"></textarea>
                 </div>
-                <br>
-                <textarea placeholder='Notes' id="notes" type="text"></textarea>
+        
             </div>
-            
-        </div>
-        <div id="addBtn">
-            <label>Add an Exercise
-                <button type='button' @click="saveForm" class="addbtn">+</button></label>
-                <button id="saveBtn" type="submit" @click="redirect">Save</button>
-        </div>
+            <div id="addBtn">
+                <label>Add an Exercise
+                    <button type='button' @click="saveForm" class="addbtn">+</button></label>
+                    <button id="saveBtn" type="submit" @click="redirect">Save</button>
+            </div>
+    </div>
 </div>
 {% endblock %}

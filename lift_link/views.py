@@ -4,8 +4,6 @@ from .models import NewPost, NewExercise, NewWorkout
 from .forms import NewPostForm, NewExerciseForm, NewWorkoutForm
 from django.contrib.auth.decorators import login_required
 
-def index(request):
-    return render(request, 'lift_link/index.html')
 
 def home(request):
     posts = NewPost.objects.all().order_by('-created_date')

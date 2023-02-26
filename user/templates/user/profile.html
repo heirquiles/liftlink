@@ -7,27 +7,26 @@ LiftLink - {{ profile.user.username }}
 {% block content %}
 {% csrf_token %}
 
-<div class="card">
 <div class="profileHeaderWrap">
   <img
-      class="accountImg"
-      src="{{ user.profile.image.url }}"
-    />
+  class="accountImg"
+  src="{{ user.profile.image.url }}"
+  />
   <h1><span class="colorBlock">{{ profile.user.username|upper }}</span></h1>
   <a href="{% url 'profile_list' %}">
     <h4>Follows</h4>
-  
-     <p>
-       {{ profile.follows.all|length }}
-     </p>
+    
+    <p>
+      {{ profile.follows.all|length }}
+    </p>
   </a>
   
   <a href="{% url 'profile_list' %}">
     <h4>Followers</h4>
-  
-      <p>
-        {{ profile.followed_by.all|length }}
-      </p>
+    
+    <p>
+      {{ profile.followed_by.all|length }}
+    </p>
   </a>
 </div>
 {% if profile.user.username != request.user.username %}
@@ -45,20 +44,23 @@ LiftLink - {{ profile.user.username }}
 
 
 {% for post in posts %}
-  <div class="postCardTop">
-  <p class="user">@{{ post.user.username }}</p>
-  <p>{{ post.body }}</p>
-  <br>
-  {% if post.image %}
-  <img src="{{ post.image.url }}" alt="{{ post.user.username }}" />
-  {% endif %}
+<div class="card">
+  <div class="post">
+    <div class="postCardTop">
+    <p class="user">@{{ post.user.username }}</p>
+    </div>
+    <p>{{ post.body }}</p>
+    <br>
+    {% if post.image %}
+    <img src="{{ post.image.url }}" alt="{{ post.user.username }}" />
+    {% endif %}
+        <div class="postCardBottom">
+            <p>{{ post.created_date }}</p>
+            <a href="{% url 'likes' post.id %}"><button class="like">👊</button></a>
+              <p>{{ post.likes.all|length }} likes</p>
+        </div>
   </div>
-      <div class="postCardBottom">
-          <p>{{ post.created_date }}</p>
-          <a href="{% url 'likes' post.id %}"><button class="like">👊</button></a>
-            <p>{{ post.likes.all|length }} likes</p>
-      </div>
   
+    </div>
       {% endfor %} 
-</div>
 {% endblock %}
