@@ -7,7 +7,7 @@
 {% block content %}
 
 <div class="card">
-  <h1 id="workoutsTitle">You have tracked <span class="colorBlock">{{ workouts.user|length }}</span> workouts with us so far!</h1>
+  <h1 id="workoutsTitle">You have tracked <span class="colorBlock">{{ workouts|length }}</span> workouts with us so far!</h1>
   {% for workouts in workouts %}
 
   <div class="exerciseList">

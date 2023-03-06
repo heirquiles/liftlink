@@ -68,10 +68,8 @@ def profile(request, id):
         action = data.get("follow")
         if action == "follow":
             profile.follows.add(profile)
-            return redirect('profile', profile.id)
         elif action == "unfollow":
             profile.follows.remove(profile)
-            return redirect('profile', profile.id)
         profile.save()
 
     posts = NewPost.objects.filter(user=request.user).order_by('-created_date')
